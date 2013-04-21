@@ -292,9 +292,6 @@ SlideDeck.prototype.loadConfig_ = function(config) {
 
   this.loadTheme_(settings.theme || []);
 
-  if (settings.favIcon) {
-    this.addFavIcon_(settings.favIcon);
-  }
 
   // Prettyprint. Default to on.
   if (!!!('usePrettify' in settings) || settings.usePrettify) {
@@ -685,19 +682,6 @@ SlideDeck.prototype.updateHash_ = function(dontPush) {
     window['_gaq'] && window['_gaq'].push(['_trackPageview',
                                           document.location.href]);
   }
-};
-
-
-/**
- * @private
- * @param {string} favIcon
- */
-SlideDeck.prototype.addFavIcon_ = function(favIcon) {
-  var el = document.createElement('link');
-  el.rel = 'icon';
-  el.type = 'image/png';
-  el.href = favIcon;
-  document.querySelector('head').appendChild(el);
 };
 
 /**
