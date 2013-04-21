@@ -9,6 +9,7 @@
 
 ---
 title: A Presentation in Three Acts
+build_lists: true
 
 <div style="padding:50px"></div>
 
@@ -17,16 +18,26 @@ title: A Presentation in Three Acts
 - OpenMM Script Builder
 
 ---
+title: Background
+
+- MSMs are pretty cool.
+- We're building a numerical approximation for the transfer operator.
+- Clustering gives us an indicator function basis over phase space.
+- Model a discrete-time Markov jump process.
+- Works best for folding.
+- Need new methods to deal with new problems.
+
+---
 
 title: MSM Parameter Selection
 
 - MSM construction is a mix of supervised and unsupervised learning problems.
 - Unsupervised learning is the problem of finding "hidden" structure in unlabeled data, where there's no *right* answer.
 - How many conformational states does a protein adopt? The answer is in the eye of the beholder.
-- Parameterizing a transition matrix is supervised.
+- (Parameterizing the transition matrix is supervised.)
 
 ---
-
+  
 title: MSM State Decomposition
 
 The MSM state decomposition, *clustering*, is characterized by a bias-variance trade off.
@@ -121,7 +132,7 @@ title: Model System
 <img src="figures/timescales.png">
 </div>
 
-KDML distance metric gives more converged timescales with fewer states.
+KDML distance metric gives more converged timescales with fewer states.  
 
 ---
 title: Fip35 WW Domain (Shaw)
@@ -131,6 +142,7 @@ subtitle: Lets look at some <em>real</em> data
 <div style="width:290px"><img height=150 src="figures/tocfigure.png"></div>
 </div>
 
+- Two 100 $\mu s$ trajectories.
 - Sampled $k=20,000$ triplets at $t_{close}$ = 2 ns, $t_{far}$ = 20 ns
 - Structures projected onto the sine and cosine components of the backbone
   dihedrals.
@@ -195,16 +207,18 @@ title: MSMAccelerator Architecture
 
 ---
 title: Adaptive Sampling Algorithms
+subtitle: MSMAccelerator provides the rapid prototyping capability
 
 - How do we switch between sampling strategies?
     - Voelz surpisal strategy / mutual information between state decompositions.
     - Smooth interpolation, simulated annealing
 - The explore/exploit tradeoff has strong overlap with the multi-armed bandit,
   and probabalistic multi-robot mapping problems.
-- MSMAccelerator provides the rapid prototyping capability.
+- Knowledge discovery in Sergio's $\theta / \alpha / \beta$ scheme?
 
 <footer class="source">
-  S. Thrun, Exploration in Active Learning <strong>1998</strong>
+  S. Thrun. Exploration in Active Learning <strong>1998</strong> <br/>
+  S. Bacallado, S. Favaro, L. Trippa. <strong>2012</strong>
 </footer>
 ---
 title: MSMAccelerator
@@ -219,7 +233,7 @@ Ala5 (amber99sbiln, implicit) OpenMM 5.1 / MSMBuilder2.6. 1000 rounds
 
 ---
 title: OpenMM Script Builder
-subtitle: Effortless OpenMM simulation <a href="http://openmm.heroku.com">setup</a>
+subtitle: Effortlessly <a href="http://openmm.heroku.com">setup</a> OpenMM simulations
 class: segue dark nobackground
 
 

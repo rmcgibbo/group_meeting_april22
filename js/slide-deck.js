@@ -79,7 +79,7 @@ SlideDeck.prototype.onDomLoaded_ = function(e) {
     this.container.classList.remove('layout-widescreen');
   }
 
-  this.loadConfig_(SLIDE_CONFIG);
+  this.loadConfig_();
   this.addEventListeners_();
   this.updateSlides_();
 
@@ -285,108 +285,51 @@ SlideDeck.prototype.toggleOverview = function() {
  * @private
  */
 SlideDeck.prototype.loadConfig_ = function(config) {
-  if (!config) {
-    return;
-  }
+  var fonts = [
+      'Open Sans:regular,semibold,italic,italicsemibold',
+      'Source Code Pro'
+   ];
+  
 
-  this.config_ = config;
-
-  var settings = this.config_.settings;
-
-  this.loadTheme_(settings.theme || []);
+  this.loadTheme_([]);
 
 
   // Prettyprint. Default to on.
-  if (!!!('usePrettify' in settings) || settings.usePrettify) {
-    prettyPrint();
-  }
-
-  if (settings.analytics) {
-    this.loadAnalytics_();
-  }
-
-  if (settings.fonts) {
-    this.addFonts_(settings.fonts);
-  }
-
   // Builds. Default to on.
-  if (!!!('useBuilds' in settings) || settings.useBuilds) {
-    this.makeBuildLists_();
-  }
-
-  // if (this.config_.presenters) {
-  //   var presenters = this.config_.presenters;
-  //   var dataConfigContact = document.querySelector('[data-config-contact]');
-  // 
-  //   var html = [];
-    // if (presenters.length == 1) {
-    //   var p = presenters[0];
-    // 
-    //   html = [p.name, p.company].join('<br>');
-    // 
-    //   var gplus = p.gplus ? '<span>g+</span><a href="' + p.gplus +
-    //       '">' + p.gplus.replace(/https?:\/\//, '') + '</a>' : '';
-    // 
-    //   var twitter = p.twitter ? '<span>twitter</span>' +
-    //       '<a href="http://twitter.com/' + p.twitter + '">' +
-    //       p.twitter + '</a>' : '';
-    // 
-    //   var www = p.www ? '<span>www</span><a href="' + p.www +
-    //                     '">' + p.www.replace(/https?:\/\//, '') + '</a>' : '';
-    // 
-    //   var github = p.github ? '<span>github</span><a href="' + p.github +
-    //       '">' + p.github.replace(/https?:\/\//, '') + '</a>' : '';
-    // 
-    //   var html2 = [gplus, twitter, www, github].join('<br>');
-    // 
-    //   if (dataConfigContact) {
-    //     dataConfigContact.innerHTML = html2;
-    //   }
-    // } else {
-    //   for (var i = 0, p; p = presenters[i]; ++i) {
-    //     html.push(p.name + ' - ' + p.company);
-    //   }
-    //   html = html.join('<br>');
-    //   if (dataConfigContact) {
-    //     dataConfigContact.innerHTML = html;
-    //   }
-    // }
-
-  // }
-
+  // add the default fonts
+  prettyPrint();
+  this.makeBuildLists_();
+  this.addFonts_(fonts);
+  
   /* Left/Right tap areas. Default to including. */
-  if (!!!('enableSlideAreas' in settings) || settings.enableSlideAreas) {
-    var el = document.createElement('div');
-    el.classList.add('slide-area');
-    el.id = 'prev-slide-area';
-    el.addEventListener('click', this.prevSlide.bind(this), false);
-    this.container.appendChild(el);
+  var el = document.createElement('div');
+  el.classList.add('slide-area');
+  el.id = 'prev-slide-area';
+  el.addEventListener('click', this.prevSlide.bind(this), false);
+  this.container.appendChild(el);
 
-    var el = document.createElement('div');
-    el.classList.add('slide-area');
-    el.id = 'next-slide-area';
-    el.addEventListener('click', this.nextSlide.bind(this), false);
-    this.container.appendChild(el);
-  }
+  var el = document.createElement('div');
+  el.classList.add('slide-area');
+  el.id = 'next-slide-area';
+  el.addEventListener('click', this.nextSlide.bind(this), false);
+  this.container.appendChild(el);
 
-  if (Modernizr.touch && (!!!('enableTouch' in settings) ||
-      settings.enableTouch)) {
-    var self = this;
+  // enable touch
+  var self = this;
 
-    // Note: this prevents mobile zoom in/out but prevents iOS from doing
-    // it's crazy scroll over effect and disaligning the slides.
-    window.addEventListener('touchstart', function(e) {
-      e.preventDefault();
-    }, false);
+  // Note: this prevents mobile zoom in/out but prevents iOS from doing
+  // it's crazy scroll over effect and disaligning the slides.
+  window.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+  }, false);
 
-    var hammer = new Hammer(this.container);
-    hammer.ondragend = function(e) {
-      if (e.direction == 'right' || e.direction == 'down') {
-        self.prevSlide();
-      } else if (e.direction == 'left' || e.direction == 'up') {
-        self.nextSlide();
-      }
-    };
+  var hammer = new Hammer(this.container);
+  hammer.ondragend = function(e) {
+    if (e.direction == 'right' || e.direction == 'down') {
+      self.prevSlide();
+    } else if (e.direction == 'left' || e.direction == 'up') {
+      self.nextSlide();
+    }
   }
 };
 
@@ -710,21 +653,6 @@ SlideDeck.prototype.loadTheme_ = function(theme) {
     }
     document.querySelector('head').appendChild(style);
   }
-};
-
-/**
- * @private
- */
-SlideDeck.prototype.loadAnalytics_ = function() {
-  var _gaq = window['_gaq'] || [];
-  _gaq.push(['_setAccount', this.config_.settings.analytics]);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
 };
 
 

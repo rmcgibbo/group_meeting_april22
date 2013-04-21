@@ -73,10 +73,27 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article ><div style="padding:50px"></div>
 
-<ul>
+<ul class="build">
 <li>Resolving conformation slow conformation changes within a folding data set.</li>
 <li>MSMAccelerator: Adaptive sampling</li>
 <li>OpenMM Script Builder</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Background</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>MSMs are pretty cool.</li>
+<li>We're building a numerical approximation for the transfer operator.</li>
+<li>Clustering gives us an indicator function basis over phase space.</li>
+<li>Model a discrete-time Markov jump process.</li>
+<li>Works best for folding.</li>
+<li>Need new methods to deal with new problems.</li>
 </ul></article>
  
 </slide>
@@ -91,7 +108,7 @@ URL: https://code.google.com/p/io-2012-slides
 <li>MSM construction is a mix of supervised and unsupervised learning problems.</li>
 <li>Unsupervised learning is the problem of finding "hidden" structure in unlabeled data, where there's no <em>right</em> answer.</li>
 <li>How many conformational states does a protein adopt? The answer is in the eye of the beholder.</li>
-<li>Parameterizing a transition matrix is supervised.</li>
+<li>(Parameterizing the transition matrix is supervised.)</li>
 </ul></article>
  
 </slide>
@@ -227,7 +244,7 @@ the horizontal diffusion constant.</li>
 <img src="figures/timescales.png">
 </div>
 
-<p>KDML distance metric gives more converged timescales with fewer states.</p></article>
+<p>KDML distance metric gives more converged timescales with fewer states.  </p></article>
  
 </slide>
 
@@ -242,6 +259,7 @@ the horizontal diffusion constant.</li>
 </div>
 
 <ul>
+<li>Two 100 $\mu s$ trajectories.</li>
 <li>Sampled $k=20,000$ triplets at $t_{close}$ = 2 ns, $t_{far}$ = 20 ns</li>
 <li>Structures projected onto the sine and cosine components of the backbone
   dihedrals.</li>
@@ -347,7 +365,7 @@ the horizontal diffusion constant.</li>
   
     <hgroup>
       <h2>Adaptive Sampling Algorithms</h2>
-      <h3></h3>
+      <h3>MSMAccelerator provides the rapid prototyping capability</h3>
     </hgroup>
     <article ><ul>
 <li>How do we switch between sampling strategies?<ul>
@@ -357,10 +375,11 @@ the horizontal diffusion constant.</li>
 </li>
 <li>The explore/exploit tradeoff has strong overlap with the multi-armed bandit,
   and probabalistic multi-robot mapping problems.</li>
-<li>MSMAccelerator provides the rapid prototyping capability.</li>
+<li>Knowledge discovery in Sergio's $\theta / \alpha / \beta$ scheme?</li>
 </ul>
 <footer class="source">
-  S. Thrun, Exploration in Active Learning <strong>1998</strong>
+  S. Thrun. Exploration in Active Learning <strong>1998</strong> <br/>
+  S. Bacallado, S. Favaro, L. Trippa. <strong>2012</strong>
 </footer></article>
  
 </slide>
@@ -386,7 +405,7 @@ the horizontal diffusion constant.</li>
     <!-- <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside> -->
     <hgroup class="auto-fadein">
       <h2>OpenMM Script Builder</h2>
-      <h3>Effortless OpenMM simulation <a href="http://openmm.heroku.com">setup</a></h3>
+      <h3>Effortlessly <a href="http://openmm.heroku.com">setup</a> OpenMM simulations</h3>
     </hgroup>
   
 </slide>
