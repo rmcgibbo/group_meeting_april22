@@ -167,6 +167,9 @@ SlideDeck.prototype.onBodyKeyDown_ = function(e) {
       e.target.isContentEditable) {
     return;
   }
+  
+  MathJax.Hub.Queue(["Rerender",MathJax.Hub]);
+  console.log('redraw');
 
   // Forward keydowns to the main slides if we're the popup.
   if (this.controller && this.controller.isPopup) {
