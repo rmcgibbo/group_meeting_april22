@@ -79,7 +79,7 @@ title: Large-Margin Learning
 
 ---
 
-title: Large-Margin Distance Metric (KDML)
+title: Kinetic Distance Metric Learning (KDML)
 
 - A set of $N$ triplets of structres, $(a, b, c)$, where $a$ and
   $b$ appear close together in a single traj., while $a$ and $c$ don't.
@@ -97,7 +97,7 @@ title: Optimization and Constraints
 $$ \max_{\mathbf{X},\rho} \left[ \alpha \rho - \frac{1}{N} \sum_i^N \lambda \left(d^\mathbf{X}(\vec{a}_i,\vec{c}_i) - d^\mathbf{X}(\vec{a}_i, \vec{b}_i) - \rho \right) \right] $$
 
 - The matrix $\mathbf{X}$ is constrained to be positive semidefinite.
-- Efficient optimization by gradient descent with rank-1 updates -- maintains p.s.d.
+- Relatively efficient optimization by gradient descent with rank-1 updates naturally maintains p.s.d.
 - Shen, C.; Kim, J.; Wang, L. Scalable large-margin Mahalanobis distance metric learning.
   *IEEE* *Trans.* *Neural* *Networks* **2010**, 21, 1524–1530
 
@@ -131,7 +131,7 @@ subtitle: Lets look at some <em>real</em> data
 <div style="width:290px"><img height=150 src="figures/tocfigure.png"></div>
 </div>
 
-- Sampled k=20,000 triplets at $t_{close}$ = 2 ns, $t_{far}$ = 20 ns
+- Sampled $k=20,000$ triplets at $t_{close}$ = 2 ns, $t_{far}$ = 20 ns
 - Structures projected onto the sine and cosine components of the backbone
   dihedrals.
 

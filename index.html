@@ -169,7 +169,7 @@ close and kinetically distant conformations.</li>
 <slide  >
   
     <hgroup>
-      <h2>Large-Margin Distance Metric (KDML)</h2>
+      <h2>Kinetic Distance Metric Learning (KDML)</h2>
       <h3></h3>
     </hgroup>
     <article ><ul>
@@ -193,7 +193,7 @@ $$</p></article>
     <article ><p>$$ \max_{\mathbf{X},\rho} \left[ \alpha \rho - \frac{1}{N} \sum_i^N \lambda \left(d^\mathbf{X}(\vec{a}_i,\vec{c}_i) - d^\mathbf{X}(\vec{a}_i, \vec{b}_i) - \rho \right) \right] $$</p>
 <ul>
 <li>The matrix $\mathbf{X}$ is constrained to be positive semidefinite.</li>
-<li>Efficient optimization by gradient descent with rank-1 updates -- maintains p.s.d.</li>
+<li>Relatively efficient optimization by gradient descent with rank-1 updates naturally maintains p.s.d.</li>
 <li>Shen, C.; Kim, J.; Wang, L. Scalable large-margin Mahalanobis distance metric learning.
   <em>IEEE</em> <em>Trans.</em> <em>Neural</em> <em>Networks</em> <strong>2010</strong>, 21, 1524–1530</li>
 </ul></article>
@@ -242,7 +242,7 @@ the horizontal diffusion constant.</li>
 </div>
 
 <ul>
-<li>Sampled k=20,000 triplets at $t_{close}$ = 2 ns, $t_{far}$ = 20 ns</li>
+<li>Sampled $k=20,000$ triplets at $t_{close}$ = 2 ns, $t_{far}$ = 20 ns</li>
 <li>Structures projected onto the sine and cosine components of the backbone
   dihedrals.</li>
 </ul>
