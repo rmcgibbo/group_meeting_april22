@@ -16,7 +16,6 @@ title: A Presentation in Three Acts
 - MSMAccelerator: Adaptive sampling
 - OpenMM Script Builder
 
-
 ---
 
 title: MSM Parameter Selection
