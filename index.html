@@ -67,15 +67,14 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2>A Presentation in Three Acts</h2>
+      <h2>A Presentation in Three / Four Acts</h2>
       <h3></h3>
     </hgroup>
-    <article ><div style="padding:50px"></div>
-
-<ul class="build">
+    <article ><ul class="build">
 <li>Resolving conformation slow conformation changes within a folding data set.</li>
 <li>MSMAccelerator: Adaptive sampling</li>
 <li>OpenMM Script Builder</li>
+<li>If time permits: initial results with optimal MSM parameter selection</li>
 </ul></article>
  
 </slide>
@@ -87,12 +86,11 @@ URL: https://code.google.com/p/io-2012-slides
       <h3></h3>
     </hgroup>
     <article ><ul>
-<li>MSMs are pretty cool.</li>
+<li>This audience is pretty knowledgeable about Markov state models.</li>
 <li>We're building a numerical approximation for the transfer operator.</li>
 <li>Clustering gives us an indicator function basis over phase space.</li>
-<li>Model a discrete-time Markov jump process.</li>
-<li>Works best for folding.</li>
-<li>Need new methods to deal with new problems.</li>
+<li>The model a discrete-time Markov jump process.</li>
+<li>Clustering and parameter selection remain significant challenges.</li>
 </ul></article>
  
 </slide>
@@ -115,10 +113,10 @@ URL: https://code.google.com/p/io-2012-slides
 <slide  >
   
     <hgroup>
-      <h2>MSM State Decomposition</h2>
+      <h2>Competing Sources of Error</h2>
       <h3></h3>
     </hgroup>
-    <article ><p>The MSM state decomposition, <em>clustering</em>, is characterized by a bias-variance trade off.</p>
+    <article ><p>The MSM state decomposition, a <em>clustering</em>, is characterized by a bias-variance trade off.</p>
 <ul>
 <li><strong>Bias:</strong> As you lower the number of states, you introduce systematic error in modeling the dynamics.</li>
 <li>Hamiltonian dynamics are completely Markovian in $\mathbb{R}^{6N}$</li>
@@ -131,7 +129,7 @@ URL: https://code.google.com/p/io-2012-slides
 <slide class="img-top-center" >
   
     <hgroup>
-      <h2>Choosing the states' shape</h2>
+      <h2>Choosing the States' Shape</h2>
       <h3></h3>
     </hgroup>
     <article ><p><img height=150 src=figures/gpcr_activation.png /></p>
@@ -148,8 +146,8 @@ URL: https://code.google.com/p/io-2012-slides
 <slide class="img-top-center" >
   
     <hgroup>
-      <h2>Protein motions aren't isotropic</h2>
-      <h3>Our MSM states shouldn't be either</h3>
+      <h2>Protein Motions Aren't Isotropic</h2>
+      <h3>MSM states shouldn't be either</h3>
     </hgroup>
     <article ><p><img height=150 src=figures/gpcr_activation.png /></p>
 <ul>
@@ -219,7 +217,7 @@ $$</p></article>
 <slide class="img-top-center" >
   
     <hgroup>
-      <h2>Model System</h2>
+      <h2>KDML Model System</h2>
       <h3></h3>
     </hgroup>
     <article ><p><img height=250 src="figures/toy_microstates.png"></p>
@@ -236,14 +234,14 @@ the horizontal diffusion constant.</li>
 <slide  >
   
     <hgroup>
-      <h2>Model System</h2>
-      <h3></h3>
+      <h2>KDML Model System</h2>
+      <h3>Timescales</h3>
     </hgroup>
     <article ><div class="flexbox vcenter">
 <img src="figures/timescales.png">
 </div>
 
-<p>KDML distance metric gives more converged timescales with fewer states.  </p></article>
+<p>KDML distance metric gives more converged timescales with fewer states.</p></article>
  
 </slide>
 
@@ -317,8 +315,8 @@ the horizontal diffusion constant.</li>
     <article ><ul>
 <li>This <strong>is</strong> the right direction, but not necessarily the right algorithm.</li>
 <li>Numerical optimization of the metric challenging &amp; can be poorly conditioned.</li>
-<li>Low rank metric = dimensionality reduction.<ul>
-<li>Enables computational access to more sophisticated clustering.</li>
+<li><strong>Low</strong> <strong>rank</strong> metric = dimensionality reduction.<ul>
+<li>Enables computational access to more sophisticated clusterings.</li>
 </ul>
 </li>
 <li><strong>Sparse</strong> metric = feature selection.<ul>
@@ -372,8 +370,8 @@ the horizontal diffusion constant.</li>
 <li>Smooth interpolation, simulated annealing</li>
 </ul>
 </li>
-<li>The explore/exploit tradeoff has strong overlap with the multi-armed bandit,
-  and probabalistic multi-robot mapping problems.</li>
+<li>The explore/exploit tradeoff has strong overlap with the multi-armed bandit
+  &amp; probabalistic multi-robot mapping problems.</li>
 <li>Knowledge discovery in Sergio's $\theta / \alpha / \beta$ scheme?</li>
 </ul>
 <footer class="source">
@@ -395,7 +393,8 @@ the horizontal diffusion constant.</li>
 
 <p><div style="padding:0px"></div></p>
 <p>Ala5 (amber99sbiln, implicit) OpenMM 5.1 / MSMBuilder2.6. 1000 rounds
-(1μs aggregate) of adaptive sampling (even).</p></article>
+(1μs aggregate) of adaptive sampling (even).</p>
+<!-- Script builder selection --></article>
  
 </slide>
 
@@ -407,6 +406,108 @@ the horizontal diffusion constant.</li>
       <h3>Effortlessly <a href="http://openmm.heroku.com">setup</a> OpenMM simulations</h3>
     </hgroup>
   
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Optimal MSM Parameter Selection</h2>
+      <h3>Is there a "right" number of states?</h3>
+    </hgroup>
+    <article ><p>$$ P[X_{0...T-1}] dx^T = \prod_{i=0}^{T-1} T(X_i \rightarrow X_{i+1}) \cdot \prod_{i=0}^{T} p(X_{i} | \sigma(X_{i}))$$</p>
+<ul>
+<li>The likelihood of an MSM includes both contributions from the transition
+  matrix and the state space.<ul>
+<li>Probability of observing a given conformation, given the state</li>
+</ul>
+</li>
+<li>The trivial 1-state model would have a transition matrix likelihood of 1.</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>A Model for the Intrastate Distribution</h2>
+      <h3>Minimal assumptions $\rightarrow$ uniform distribution</h3>
+    </hgroup>
+    <article ><p>We assume that the probability of sampling a given configuration, given that
+the system is in state $i$, is uniform over the volume of the state.</p>
+<p>$$ p(X_i | \sigma(x_i)) = \begin{cases}
+\frac{1}{V(\sigma(x_i))} &amp; \mbox{if $X_i$ in state $\sigma(i)$} \cr
+0 &amp; \mbox{otherwise } \end{cases}
+$$</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Computing the Volume of States</h2>
+      <h3>Not easy</h3>
+    </hgroup>
+    <article ><p>Approaches:</p>
+<ul>
+<li>Rejection sampling monte carlo</li>
+<li>Ball walk monte carlo</li>
+<li>Analytic approximation based on the distribution of point-generator distances?</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Müller potential</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><div class="vcenter flexbox">
+<div>
+<img src="https://raw.github.com/rmcgibbo/opt-k/master/paper/figs/kcent_vors.png"
+  height=500/>
+</div>
+</div></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Müller potential</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><div style="float:right; margin-top:-100px; padding-right:80px">
+<image src="https://raw.github.com/rmcgibbo/opt-k/master/paper/figs/like_comp.png"
+height=600>
+</div>
+
+<ul>
+<li>A model with more states will almost always have a higher empirical likelihood.</li>
+<li>Model selection via cross validation, AIC, or BIC.</li>
+<li>$AIC = 2k - 2 \ln(L)$</li>
+<li>We can also compare different clustering algorithms.</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Optimal MSM Parameter Selection</h2>
+      <h3>Outlook</h3>
+    </hgroup>
+    <article ><ul>
+<li>Choosing the lag time is more challenging, and requires a rate matrix
+  formalism.</li>
+<li>High dimensional volumes are extremely challenging to compute.</li>
+<li>Our microstate models are undenyably overfit.</li>
+</ul>
+<footer class="source">
+M. Simonovits; How to compute the volume in high dimension?
+<em>Math. Program., Ser. B 9</em> <strong>2003</strong> 97: 337–374
+</footer></article>
+ 
 </slide>
 
 
