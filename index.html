@@ -59,7 +59,7 @@ URL: https://code.google.com/p/io-2012-slides
 
     <h1> Protein Folding is Easy</h1>
     <h2> Towards MSMs for Conformational Change</h2>
-    <p> Robert T. McGibbon<br/> April 22, 2013<br/></p>
+    <p> Robert T. McGibbon<br/> April 29, 2013<br/></p>
   </hgroup>
 </slide>
 
@@ -261,7 +261,10 @@ the horizontal diffusion constant.</li>
 <li>Structures projected onto the sine and cosine components of the backbone
   dihedrals.</li>
 </ul>
-<footer class="source">Shaw et. al; Atomic-level characterization of the structural dynamics of proteins. <em>Science</em> <strong>2010</strong>, 330, 341–346</footer></article>
+<footer class="source"><a href="https://www.sciencemag.org/content/330/6002/341.long">
+Shaw et. al; Atomic-level characterization of the structural dynamics of proteins. <em>Science</em> <strong>2010</strong>, 330, 341–346
+</a>
+</footer></article>
  
 </slide>
 
@@ -361,6 +364,32 @@ the horizontal diffusion constant.</li>
 <slide  >
   
     <hgroup>
+      <h2>MSMAccelerator Architecture</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><div style="height: 98px"></div>
+
+<div class="vcenter flexbox">
+<div><img width=800 src="figures/server1.png"></div>
+</div></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>MSMAccelerator Architecture</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><div class="vcenter flexbox">
+<div><img width=800 src="figures/server2.png"></div>
+</div></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
       <h2>Adaptive Sampling Algorithms</h2>
       <h3>MSMAccelerator provides the rapid prototyping capability</h3>
     </hgroup>
@@ -375,8 +404,8 @@ the horizontal diffusion constant.</li>
 <li>Knowledge discovery in Sergio's $\theta / \alpha / \beta$ scheme?</li>
 </ul>
 <footer class="source">
-  S. Thrun. Exploration in Active Learning <strong>1998</strong> <br/>
-  S. Bacallado, S. Favaro, L. Trippa. <strong>2012</strong>
+  <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.1.7894">S. Thrun. Exploration in Active Learning <strong>1998</strong> <br/></a>
+  <a href="http://bayesian.org/node/2518">S. Bacallado, S. Favaro, L. Trippa. <strong>2012</strong></a>
 </footer></article>
  
 </slide>
@@ -403,7 +432,7 @@ the horizontal diffusion constant.</li>
     <!-- <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside> -->
     <hgroup class="auto-fadein">
       <h2>OpenMM Script Builder</h2>
-      <h3>Effortlessly <a href="http://openmm.heroku.com">setup</a> OpenMM simulations</h3>
+      <h3>Effortlessly <a href="http://builder.openmm.org">setup</a> OpenMM simulations</h3>
     </hgroup>
   
 </slide>
@@ -418,7 +447,7 @@ the horizontal diffusion constant.</li>
 <ul>
 <li>The likelihood of an MSM includes both contributions from the transition
   matrix and the state space.<ul>
-<li>Probability of observing a given conformation, given the state</li>
+<li>$p(X|s)$ is probability of observing a given conformation, given the state</li>
 </ul>
 </li>
 <li>The trivial 1-state model would have a transition matrix likelihood of 1.</li>
@@ -498,14 +527,14 @@ height=600>
       <h3>Outlook</h3>
     </hgroup>
     <article ><ul>
-<li>Choosing the lag time is more challenging, and requires a rate matrix
+<li>Choosing the lag time is more challenging, and requires (I think) a rate matrix
   formalism.</li>
 <li>High dimensional volumes are extremely challenging to compute.</li>
-<li>Our microstate models are undenyably overfit.</li>
+<li>Our microstate models are undeniably overfit.</li>
 </ul>
 <footer class="source">
-M. Simonovits; How to compute the volume in high dimension?
-<em>Math. Program., Ser. B 9</em> <strong>2003</strong> 97: 337–374
+<a href="http://www.math.tamu.edu/~rojas/simonvitzvolumehigh.pdf">M. Simonovits; How to compute the volume in high dimension?
+<em>Math. Program., Ser. B 9</em> <strong>2003</strong> 97: 337–374</a>
 </footer></article>
  
 </slide>

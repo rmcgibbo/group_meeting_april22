@@ -1,7 +1,7 @@
 % title: Protein Folding is Easy
 % subtitle: Towards MSMs for Conformational Change
 % author: Robert T. McGibbon
-% author: April 22, 2013
+% author: April 29, 2013
 % thankyou: Thanks everyone!
 % thankyou_details: And especially Vijay, Christian and Kyle.
 % contact: <span>www</span> <a href="http://www.stanford.edu/~rmcgibbo">stanford.edu/~rmcgibbo</a>
@@ -146,7 +146,10 @@ subtitle: Lets look at some <em>real</em> data
 - Structures projected onto the sine and cosine components of the backbone
   dihedrals.
 
-<footer class="source">Shaw et. al; Atomic-level characterization of the structural dynamics of proteins. <em>Science</em> <strong>2010</strong>, 330, 341–346</footer>
+<footer class="source"><a href="https://www.sciencemag.org/content/330/6002/341.long">
+Shaw et. al; Atomic-level characterization of the structural dynamics of proteins. <em>Science</em> <strong>2010</strong>, 330, 341–346
+</a>
+</footer>
 
 ---
 title: Fip35 WW Domain (Shaw)
@@ -205,6 +208,22 @@ title: MSMAccelerator Architecture
 - Code on <a href="http://github.com/rmcgibbo/msmaccelerator2">github</a>.
 
 ---
+title: MSMAccelerator Architecture
+
+<div style="height: 98px"></div>
+<div class="vcenter flexbox">
+<div><img width=800 src="figures/server1.png"></div>
+</div>
+
+---
+title: MSMAccelerator Architecture
+
+<div class="vcenter flexbox">
+<div><img width=800 src="figures/server2.png"></div>
+</div>
+
+
+---
 title: Adaptive Sampling Algorithms
 subtitle: MSMAccelerator provides the rapid prototyping capability
 
@@ -216,8 +235,8 @@ subtitle: MSMAccelerator provides the rapid prototyping capability
 - Knowledge discovery in Sergio's $\theta / \alpha / \beta$ scheme?
 
 <footer class="source">
-  S. Thrun. Exploration in Active Learning <strong>1998</strong> <br/>
-  S. Bacallado, S. Favaro, L. Trippa. <strong>2012</strong>
+  <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.1.7894">S. Thrun. Exploration in Active Learning <strong>1998</strong> <br/></a>
+  <a href="http://bayesian.org/node/2518">S. Bacallado, S. Favaro, L. Trippa. <strong>2012</strong></a>
 </footer>
 ---
 title: MSMAccelerator
@@ -234,7 +253,7 @@ Ala5 (amber99sbiln, implicit) OpenMM 5.1 / MSMBuilder2.6. 1000 rounds
 <!-- Script builder selection -->
 ---
 title: OpenMM Script Builder
-subtitle: Effortlessly <a href="http://openmm.heroku.com">setup</a> OpenMM simulations
+subtitle: Effortlessly <a href="http://builder.openmm.org">setup</a> OpenMM simulations
 class: segue dark nobackground
 
 
@@ -247,7 +266,7 @@ $$ P[X_{0...T-1}] dx^T = \prod_{i=0}^{T-1} T(X_i \rightarrow X_{i+1}) \cdot \pro
 
 - The likelihood of an MSM includes both contributions from the transition
   matrix and the state space.
-    - Probability of observing a given conformation, given the state
+    - $p(X|s)$ is probability of observing a given conformation, given the state
 - The trivial 1-state model would have a transition matrix likelihood of 1.
 
 ---
@@ -299,12 +318,12 @@ height=600>
 title: Optimal MSM Parameter Selection
 subtitle: Outlook
 
-- Choosing the lag time is more challenging, and requires a rate matrix
+- Choosing the lag time is more challenging, and requires (I think) a rate matrix
   formalism.
 - High dimensional volumes are extremely challenging to compute.
-- Our microstate models are undenyably overfit.
+- Our microstate models are undeniably overfit.
 
 <footer class="source">
-M. Simonovits; How to compute the volume in high dimension?
-<em>Math. Program., Ser. B 9</em> <strong>2003</strong> 97: 337–374
+<a href="http://www.math.tamu.edu/~rojas/simonvitzvolumehigh.pdf">M. Simonovits; How to compute the volume in high dimension?
+<em>Math. Program., Ser. B 9</em> <strong>2003</strong> 97: 337–374</a>
 </footer>
